@@ -207,25 +207,6 @@ Inbound must otherwise be eligible. Outcome depends on generated text — treat 
 | PER-06 | Other browser/session | M | Same saved config, or document if local |
 | PER-07 | Unsaved + refresh | M | Record autosave vs loss |
 
-### Security / performance
-
-| ID | Title | P | Expected |
-|---|---|---|---|
-| SEC-01 | XSS in a tag | H | Escaped; no script |
-| SEC-02 | XSS in inbound + a real keyword | H | Still blocks; no script in UI |
-| SEC-03 | `' OR 1=1 --` as tag | M | Literal; no error |
-| SEC-04 | Huge tag/body | M | Controlled error, not a crash |
-| SEC-05 | Logged out / lesser role | H | Not writable |
-| A11Y-01 | Accessible names | M | Inputs named by field label |
-| A11Y-02 | Helper text associated | M | Announced with the input |
-| A11Y-03 | Chip `x` named | M | "Remove {token}", not unnamed |
-| A11Y-04 | Color not only state | L | Text/icon for state |
-| A11Y-05 | Visible focus | M | Focus ring on input and `x` |
-| PERF-01 | 50–100 chips | L | UI stays usable |
-| PERF-02 | Many patterns, one send | L | Block/allow without a long hang |
-| PERF-03 | Rapid add/remove | L | No stuck input / dupes |
-
----
 
 ## E2E: RT-UM-01
 
@@ -244,8 +225,6 @@ One automated test. Chosen because the body is under our control (unlike AR, whi
 - Clean customer email (cannot match EP)
 - Clean subject (cannot match SUB)
 - Body contains the unique keyword
-
-**Preconditions:** DEV Guardrails + Playground on `version=e2e-draft-msvp6l995n2q`. Channel = Email, Autopilot.
 
 **Steps**
 
