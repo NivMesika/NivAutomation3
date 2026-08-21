@@ -1,6 +1,11 @@
-export const POLICY_VERSION = process.env.POLICY_VERSION ?? 'e2e-draft-msvp6l995n2q';
+/* 
+App constants centralize the draft version, deep links, and Automation Audit field labels so the POM and tests stay DRY and typed —
+and we can override the draft with an env var.
+*/
 
-export const AUTH_FILE = 'playwright/.auth/user.json';
+export const POLICY_VERSION = process.env.POLICY_VERSION ?? 'e2e-draft-msvp6l995n2q'; // The Guardio draft the assignment uses
+
+export const AUTH_FILE = 'playwright/.auth/user.json'; // The file where the session is saved
 
 export const GUARDRAILS_PATH =
     `/config/guardrails?version=${POLICY_VERSION}#automation-audit`;

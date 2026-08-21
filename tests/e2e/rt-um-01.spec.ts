@@ -3,13 +3,12 @@ import { Priority } from "../../support/test-tags";
 import { AuditField } from "../../support/constants/app";
 
 test.describe('Automation Audit — RT-UM-01', () => {
-    test.setTimeout(180_000);
     test('Should block a Playground email when Words in User Message matches the body',
         { tag: Priority.High },
         async ({ pages, testUser }) => {
             await pages.navigation.navigateTo('Guardrails');
             await pages.guardrails.validation.validateAutomationAuditVisible();
-            await pages.guardrails.addWord(AuditField.wordsInUserMessage, testUser.uniqueWord);
+            await pages.guardrails.addWord(AuditField.wordsInUserMessage, testUser.uniqueWord); // Add the unique word to the Automation Audit
             await pages.guardrails.save();
             await pages.guardrails.validation.validateWordPresent(testUser.uniqueWord);
 
@@ -24,10 +23,10 @@ test.describe('Automation Audit — RT-UM-01', () => {
             await pages.playground.validation.validateBlockedByUserMessage(testUser.uniqueWord);
         });
 
-    test.afterEach(async ({ pages, testUser }) => {
-        await pages.navigation.navigateTo('Guardrails');
-        if (await pages.guardrails.hasWord(testUser.uniqueWord)) {
-            await pages.guardrails.removeWord(testUser.uniqueWord);
+    test.afterEach(async ({ pages, testUser }) => { 
+        await pages.navigation.navigateTo('Guardrails'); 
+        if (await pages.guardrails.hasWord(testUser.uniqueWord)) { 
+            await pages.guardrails.removeWord(testUser.uniqueWord); 
             await pages.guardrails.save();
         } else {
             await pages.guardrails.discardIfDirty();

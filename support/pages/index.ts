@@ -1,3 +1,7 @@
+/* 
+Pages.ts is the entry point for the pages object. allows you to instantiate all the pages at once by saying 'pages' in the test.
+*/
+
 import { Page, TestInfo } from "@playwright/test";
 import { Navigation } from "./infra/navigation";
 import { Guardrails } from "./guardrails";
